@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "pixer-regular";
+    src: url("../fonts/Pixer-Regular.woff2") format("woff2"),
+        url("../fonts/Pixer-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header {
+    background-color: #29292A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.logo {
+    color: #fff;
+    font-family: "pixer-regular";
+    font-weight: 700;
+    font-size: 46px;
+}
+
+.logo:hover {
+    filter: brightness(1.2);
+}
