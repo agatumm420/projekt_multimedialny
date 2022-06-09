@@ -7,6 +7,7 @@ import Choice from "./components/finalchoice";
 import Choice1 from "./components/choice1";
 import Choice2 from "./components/choice2";
 import React from "react";
+import { HashRouter as Router } from "react-router-dom";
 import wstep from "./scripts/wstep.js";
 import VidLevel from "./components/videolevel";
 import VidLevelTime from "./components/videolvltime";
@@ -21,11 +22,12 @@ import good from "./scripts/good";
 import bad from "./scripts/bad";
 const Routez = () => {
   return (
-    <BrowserRouter className="site">
+    <Router basename="/" className="site">
       <Routes>
-        <Route exact path="*" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route
-          path="level1/*"
+          exact
+          path="/level1"
           element={
             <VidLevel
               text={wstep}
@@ -37,7 +39,8 @@ const Routez = () => {
           }
         />
         <Route
-          path="level1c1/*"
+          exact
+          path="/level1c1"
           element={
             <VidLevelTime
               next="level2"
@@ -48,7 +51,8 @@ const Routez = () => {
           }
         />
         <Route
-          path="level2/*"
+          exact
+          path="/level2"
           element={
             <LevelClick
               next="level3"
@@ -64,7 +68,8 @@ const Routez = () => {
           }
         />
         <Route
-          path="level3/*"
+          exact
+          path="/level3"
           element={
             <Level3
               next="level4"
@@ -81,7 +86,8 @@ const Routez = () => {
           }
         />
         <Route
-          path="level4/*"
+          exact
+          path="/level4"
           element={
             <Level4
               next="level5"
@@ -98,7 +104,8 @@ const Routez = () => {
           }
         />
         <Route
-          path="level5/*"
+          exact
+          path="/level5"
           element={
             <Level5
               next="choice"
@@ -115,7 +122,8 @@ const Routez = () => {
           }
         />
         <Route
-          path="bad/*"
+          exact
+          path="/bad"
           element={
             <Bad
               next="choice"
@@ -127,13 +135,15 @@ const Routez = () => {
           }
         />
         <Route
-          path="choice/*"
+          exact
+          path="/choice"
           video="Filmik6.mp4"
           audio="Filmik6.mp3"
           element={<Choice />}
         />
         <Route
-          path="choice1/*"
+          exact
+          path="/choice1"
           element={
             <Choice1
               code={code}
@@ -145,13 +155,14 @@ const Routez = () => {
           }
         />
         <Route
-          path="choice2/*"
+          exact
+          path="/choice2"
           element={<Choice2 />}
           isScript={true}
           text={good}
         />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 };
 export default Routez;

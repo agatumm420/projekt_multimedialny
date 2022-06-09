@@ -34,7 +34,7 @@ class Home extends Component {
   };
   render() {
     if (this.state.redirect) {
-      return <Navigate to={"level1/*"} />;
+      return <Navigate to={"/level1"} />;
     }
     return (
       <div className="home">
