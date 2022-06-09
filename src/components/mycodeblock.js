@@ -5,6 +5,7 @@ import { Interactive } from "react-interactive";
 import CodeBlockWriter from "code-block-writer";
 import ContentEditable from "react-contenteditable";
 import Confetti from "react-confetti";
+import { Navigate } from "react-router-dom";
 
 const CheckCondition = () => {
   let condition = document.querySelector("#condition");
@@ -40,6 +41,9 @@ class MyCodeBlock extends Component {
   };
 
   render() {
+    if (this.state.redirect) {
+      return <Navigate to={"/bad"} />;
+    }
     return (
       <div className="bigger-code-div">
         <div className="code-component">
@@ -62,7 +66,7 @@ class MyCodeBlock extends Component {
         </div>
         {this.state.isSolved ? (
           <Confetti
-            width={1200}
+            width={2000}
             height={1200}
             numberOfPieces={200}
             colors={["#E63C50", "#3D3B71", "#ADB50F", "#4B4B48"]}
@@ -73,6 +77,23 @@ class MyCodeBlock extends Component {
             <p>Time is running out</p>
           </div>
         )}
+        {this.state.isSolved ? (
+          <div className="congrats">
+            <p id="congrat-text">Congratulations! You fixed the loop!</p>
+            <p id="congrat-text">But was it the right Choice?</p>
+
+            <a
+              href="#"
+              class="testing"
+              data-text="BUY TICKETS"
+              onClick={() => {
+                this.setState({ redirect: true });
+              }}
+            >
+              Click to find out
+            </a>
+          </div>
+        ) : null}
       </div>
     );
   }

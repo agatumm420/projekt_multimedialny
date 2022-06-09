@@ -8,6 +8,11 @@ const styles = {
     height: 60,
     color: "#fff",
   },
+  icon2: {
+    width: 60,
+    height: 60,
+    color: "#29292A",
+  },
 };
 
 class Home extends Component {
@@ -15,10 +20,17 @@ class Home extends Component {
     super();
     this.state = {
       redirect: false,
+      hover: false,
     };
   }
   onClick = () => {
     this.setState({ redirect: true });
+  };
+  ShowsUp = () => {
+    this.setState({ hover: true });
+  };
+  Leaves = () => {
+    this.setState({ hover: false });
   };
   render() {
     if (this.state.redirect) {
@@ -27,11 +39,23 @@ class Home extends Component {
     return (
       <div className="home">
         <div className="circle">
-          <div className="doggo"></div>
+          <img src={`${process.env.PUBLIC_URL}/szary-doggo.svg`} id="dogger" />
           <p className="title"> Play </p>
-          <button className="start-btn" onClick={this.onClick}>
-            <FontAwesomeIcon icon={faPlay} style={styles.icon} />
-          </button>
+
+          <a
+            href="#"
+            class="testing"
+            data-text="BUY TICKETS"
+            onClick={this.onClick}
+            onMouseEnter={this.ShowsUp}
+            onMouseLeave={this.Leaves}
+            id="start-btn"
+          >
+            <FontAwesomeIcon
+              icon={faPlay}
+              style={this.state.hover ? styles.icon2 : styles.icon}
+            />
+          </a>
         </div>
       </div>
     );
